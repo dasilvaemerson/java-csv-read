@@ -29,14 +29,14 @@ public class App {
                         array[i[0]] = number;
                     }
                     
-                    System.out.print(array[i[0]]);
+                    //System.out.print(array[i[0]]);
                     
                     //Increment value of i
                     i[0] = i[0] + 1;
                     // if i maior que i, substituir o i pelo outro. BUUUUUUM
 				}
                 i[0] = 0;
-				System.out.println();
+				//System.out.println();
 			}
 
             // closes and open the file again
@@ -44,16 +44,19 @@ public class App {
             reader = new BufferedReader(new FileReader(FilePath));
 
             // Counter for the loop iterations
-			int count = 0;
-
+			// int count = 0;
+            
+            int count2 = 0;
             while((line = reader.readLine()) != null) {
 				// Prints horizontal line after the header.
-                if (count == 1) {
-					System.out.printf("%-17s+", "-----------------");
-					System.out.printf("%-17s+", "-----------------");
-					System.out.printf("%-17s+", "-----------------");
-					System.out.printf("%-17s+", "-----------------");
-					System.out.println();
+                int[] count = {0};
+                
+                if (count2 == 1) {
+					myMethod(array[0]);
+                    myMethod(array[1]);
+                    myMethod(array[2]);
+                    myMethod(array[3]);
+                    System.out.println();
 				}
                 
 				String[] row = line.split(";");
@@ -62,11 +65,15 @@ public class App {
 				
 				// "For Each" Statement
 				for(String index : row) {
-					// "%-20s" is a way to format the output. s for String. 17 is Space. - means Left Justified.
-					System.out.printf("%-17s|", index);	
+					
+                    // "%-20s" is a way to format the output. s for String. 17 is Space. - means Left Justified.
+                    System.out.printf("%-" + array[count[0]] + "s|", index);
+                    count[0] = count[0] + 1;
 				}
 				System.out.println();
-				count++;
+                count2++;
+                
+				
 			}
 		} 
 		catch(Exception e) {
@@ -82,4 +89,15 @@ public class App {
 			}
 		}
 	}
+
+    static void myMethod(int number) {
+        // code to be executed
+        String str = "-";
+        int n=0;
+        n = number;
+        String horizontalLine = new String(new char[n]).replace("\0", str);
+        System.out.print(horizontalLine);
+        System.out.print("+");
+        
+      }
 }
