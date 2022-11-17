@@ -12,31 +12,31 @@ public class App {
 			// Pass in the CSV file to the file reader
 			reader = new BufferedReader(new FileReader(FilePath));
             
-            
-            
-			while((line = reader.readLine()) != null) { 
-                int i = 0;
-                int number = 0;
-				String[] row = line.split(";");
+            //Create array with 4 values
+            int[] array = {0, 0, 0, 0};
 
+			while((line = reader.readLine()) != null) { 
+                
+                int[] i = {0};
+                
+				String[] row = line.split(";");
+                
+                //Go through the lines and check the length of each word
 				for(String index : row) {
-                    int[] array = {0, 0, 0, 0};
-                    
-					number = index.length();
-                    if (number > array[i]) {
-                        array[i] = number;
+					int number = index.length();
+                    //If the length is bigger than the number of the index of the list, replace it
+                    if (number > array[i[0]]) {
+                        array[i[0]] = number;
                     }
-            
-                    System.out.print(array[i]);
-                    i = i++;
                     
+                    System.out.print(array[i[0]]);
+                    
+                    //Increment value of i
+                    i[0] = i[0] + 1;
                     // if i maior que i, substituir o i pelo outro. BUUUUUUM
 				}
-
-                i = 0;
-                
+                i[0] = 0;
 				System.out.println();
-
 			}
 
             // closes and open the file again
