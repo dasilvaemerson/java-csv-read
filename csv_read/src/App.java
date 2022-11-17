@@ -11,21 +11,51 @@ public class App {
 		try {
 			// Pass in the CSV file to the file reader
 			reader = new BufferedReader(new FileReader(FilePath));
-			
-			// Counter for the loop iterations
+            
+            
+            
+			while((line = reader.readLine()) != null) { 
+                int i = 0;
+                int number = 0;
+				String[] row = line.split(";");
+
+				for(String index : row) {
+                    int[] array = {0, 0, 0, 0};
+                    
+					number = index.length();
+                    if (number > array[i]) {
+                        array[i] = number;
+                    }
+            
+                    System.out.print(array[i]);
+                    i = i++;
+                    
+                    // if i maior que i, substituir o i pelo outro. BUUUUUUM
+				}
+
+                i = 0;
+                
+				System.out.println();
+
+			}
+
+            // closes and open the file again
+            reader.close();
+            reader = new BufferedReader(new FileReader(FilePath));
+
+            // Counter for the loop iterations
 			int count = 0;
-			
-			// Continue reading to the next line. If there is no line, it breaks out of the loop.
-			while((line = reader.readLine()) != null) {
+
+            while((line = reader.readLine()) != null) {
 				// Prints horizontal line after the header.
-				if (count == 1) {
+                if (count == 1) {
 					System.out.printf("%-17s+", "-----------------");
 					System.out.printf("%-17s+", "-----------------");
 					System.out.printf("%-17s+", "-----------------");
 					System.out.printf("%-17s+", "-----------------");
 					System.out.println();
 				}
-				
+                
 				String[] row = line.split(";");
 				
 				// HERE: Count the length of each data.
